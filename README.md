@@ -20,12 +20,13 @@ import "github.com/yourusername/diskmap"
 func main() {
     db := diskmap.NewDiskMap("/path/to/storage")
 
-    // Set a key-value pair
+    // Set a key value pair
     err := db.Set("key", []byte("value"))
     if err != nil {
         // Handle error
     }
 
+    // Get the value
     value, err := db.Get("key")
     if err != nil {
         // Handle error
