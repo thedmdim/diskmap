@@ -54,7 +54,7 @@ func (db *DiskMap) Set(key string, value []byte) error {
 	return nil
 }
 
-// Get retrieves the value associated with the given key from the DiskMap
+// Get retrieves the value associated with the key from the DiskMap
 func (db *DiskMap) Get(key string) ([]byte, error) {
 	filePath := filepath.Join(db.path, key)
 	return os.ReadFile(filePath)

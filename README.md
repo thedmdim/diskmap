@@ -31,6 +31,12 @@ func main() {
     if err != nil {
         // Handle error
     }
+
+    // Del the value
+    value, err := db.Del("key")
+    if err != nil {
+        // Handle error
+    }
 }
 ```
 
