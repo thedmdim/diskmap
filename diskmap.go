@@ -31,8 +31,8 @@ func NewDiskMap(path string) *DiskMap {
 	}
 }
 
-// Set stores the given key-value pair in the DiskMap.
-// It ensures concurrent safety by locking access to the file associated with the key.
+// Set stores the given key-value pair in the DiskMap
+// It ensures concurrent safety by locking access to the file associated with the key
 func (db *DiskMap) Set(key string, value []byte) error {
 
 	// Ensure only one goroutine can access the file for this key at a time
@@ -54,9 +54,18 @@ func (db *DiskMap) Set(key string, value []byte) error {
 	return nil
 }
 
-// Get retrieves the value associated with the given key from the DiskMap.
-// It returns an error if the key does not exist or if there is an issue reading the file.
+// Get retrieves the value associated with the given key from the DiskMap
 func (db *DiskMap) Get(key string) ([]byte, error) {
 	filePath := filepath.Join(db.path, key)
 	return os.ReadFile(filePath)
+}
+
+// Del deletes a file assitiated with a key
+func (db *DiskMap) Del(key string) error {
+    filePath := filepath.Join(db.path, key)
+    err := os.Remove(filePath)
+    if err != nil {
+        return err
+    }
+    return nil
 }
