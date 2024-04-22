@@ -15,7 +15,7 @@ And it's not the fastest one, but
 ## Usage
 
 ```go
-import "github.com/yourusername/diskmap"
+import "github.com/thedmdim/diskmap"
 
 func main() {
     db := diskmap.NewDiskMap("/path/to/storage")
